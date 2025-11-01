@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  pinok_io:
+    container_name: pinok_io_cont
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # ports:
+    #   - "8008:8000"
+    networks:
+      - ai_gpt_messengers
+      - ai_chats
+    volumes:
+      - ./logs:/app/logs
+
+networks:
+  ai_gpt_messengers:
+    external: true
+  ai_chats:
+    external: true

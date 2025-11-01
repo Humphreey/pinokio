@@ -1,0 +1,25 @@
+redis:
+  host: "redis"
+  port: 6379
+  db: 0
+  password: null  # пароля нет
+  decode_responses: true
+
+keys:
+  raw_stream: "stream:chat:{chat_id}"           # сырые сообщения чата
+  final_stream: "stream:chat:{chat_id}:final"   # финальные сообщения чата
+  agg_hash: "agg:{chat_id}"                    # буфер текущей серии
+  sched_zset: "sched:agg"                      # планировщик дедлайнов
+  conf_hash: "conf:chat:{chat_id}"             # конфигурация чата
+  metrics_hash: "metrics:chat:{chat_id}"       # метрики чата
+
+aggregation:
+  window_seconds_default: 20                   # размер окна буфера по умолчанию (сек)
+  group_name: "agg"                            # имя consumer group для воркеров
+
+workers:
+  block_ms: 1000                               # время блокировки при чтении стрима (мс)
+  max_batch: 1000                              # максимальное количество чатов для обработки за один тик
+
+scheduler:
+  interval_ms: 200                             # интервал между проверками дедлайнов (мс)

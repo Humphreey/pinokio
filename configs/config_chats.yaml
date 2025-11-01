@@ -1,0 +1,35 @@
+# DEV
+"00000000-00000000-00000000-00000000-00000000": # входящий чат
+  input_chat_name: "Chat Name"
+  pinger:
+    output_chat_id: "00000000-00000000-00000000-00000000-00000000" # чат в который отправляются сообщения
+    enabled: true # ручное управление
+    whitelist: ["@telegram_acc"] # сотрудники pp
+    bot_enabled: true # сообщения от бота распознаются как pp (False полностью игнорируются)
+    start_time: "07:00" #UTC - время начала работы
+    end_time: "19:00"   #UTC - время окончания работы
+    days: [mon, tue, wed, thu, fri] # рабочие дни
+    redis_buffer_window: 20
+    message_timeout: 40
+  silencer:
+    output_chat_id: "00000000-00000000-00000000-00000000-00000000" # чат в который отправляются сообщения
+    enabled: true # включить мониторинг тишины
+    silence_timeout: 90 
+
+#PREPROD
+# "00000000-00000000-00000000-00000000-00000000": # входящий чат
+#   input_chat_name: "CHAT NAME"
+#   pinger:
+#     output_chat_id: "00000000-00000000-00000000-00000000-00000000"
+#     enabled: true # ручное управление
+#     whitelist: ["@telegram_acc"] # сотрудники pp
+#     bot_enabled: true # сообщения от бота распознаются как pp (False полностью игнорируются)
+#     start_time: "07:00" #UTC - время начала работы
+#     end_time: "16:00"   #UTC - время окончания работы
+#     days: [mon, tue, wed, thu, fri] # рабочие дни
+#     redis_buffer_window: 20
+#     message_timeout: 40
+#   silencer:
+#     output_chat_id: "00000000-00000000-00000000-00000000-00000000"
+#     enabled: true # включить мониторинг тишины
+#     silence_timeout: 90 
